@@ -40,7 +40,7 @@ namespace Sprite
 		body.Flip();
 	}
 
-	void Animation::GetDrawn(sf::RenderWindow& on)
+	void Animation::GetDrawn(Renderer& on)
 	{
 		body.GetDrawn(currentFrame, on);
 		if (IsPlaying() && frameTimer->getElapsedTime().asSeconds() >= timeBetweenFrames)

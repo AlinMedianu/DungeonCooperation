@@ -21,7 +21,7 @@ namespace Sprite
 		void Move(float offsetX, float offsetY);
 		void Scale(float factor);
 		void Flip();
-		void GetDrawn(sf::RenderWindow& on);
+		void GetDrawn(Renderer& on);
 	};
 
 	template<Enumeration AnimationType>
@@ -80,7 +80,7 @@ namespace Sprite
 	}
 
 	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::GetDrawn(sf::RenderWindow& on)
+	inline void Animator<AnimationType>::GetDrawn(Renderer& on)
 	{
 		animations[static_cast<size_t>(current)].GetDrawn(on);
 	}

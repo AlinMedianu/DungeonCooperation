@@ -2,7 +2,7 @@
 
 namespace Sprite
 {
-	Sheet::Sheet(const sf::Texture& source, const sf::IntRect& firstSpriteLocation, size_t spriteCount)
+	Sheet::Sheet(const sf::Texture& source, const sf::IntRect& firstSpriteLocation, size_t spriteCount, float spriteWorldSize)
 		: sprites{}
 	{
 		sprites.assign(spriteCount, sf::Sprite{ source });
@@ -11,8 +11,9 @@ namespace Sprite
 		{
 			sprite.setTextureRect(nextSpriteLocation);
 			nextSpriteLocation.left += nextSpriteLocation.width;
+			sprite.setScale(spriteWorldSize, -spriteWorldSize);
 			sprite.setOrigin(sprite.getLocalBounds().left + sprite.getLocalBounds().width / 2.f,
-				sprite.getLocalBounds().top + sprite.getLocalBounds().height / 2.f);
+				sprite.getLocalBounds().top + sprite.getLocalBounds().height);
 		}
 	}
 
@@ -31,21 +32,18 @@ namespace Sprite
 	{
 		assert(factor > 0);
 		for (auto& sprite : sprites)
-			sprite.setScale(factor, factor);
+			sprite.scale(factor, factor);
 	}
 
 	void Sheet::Flip()
 	{
 		for (auto& sprite : sprites)
-		{
-			auto scale{ sprite.getScale() };
-			sprite.setScale(-scale.x, scale.y);
-		}
+			sprite.scale(-1, 1);
 	}
 
-	void Sheet::GetDrawn(size_t spriteIndex, sf::RenderWindow& on) const
+	void Sheet::GetDrawn(size_t spriteIndex, Renderer& on) const
 	{
 		assert(spriteIndex < sprites.size());
-		on.draw(sprites[spriteIndex]);
+		on.Draw(sprites[spriteIndex]);
 	}
 }

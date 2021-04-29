@@ -15,7 +15,7 @@ namespace Sprite
 	public:
 		enum class Player : size_t
 		{
-			Idle, Run, Hit,
+			Idle, Walk,
 			COUNT
 		};
 		Animation(Sheet& body, size_t firstFrame, size_t lastFrame, float timeBetweenFrames);
@@ -25,6 +25,6 @@ namespace Sprite
 		void Move(float offsetX, float offsetY);
 		void Scale(float factor);
 		void Flip();
-		void GetDrawn(sf::RenderWindow& on);
+		void GetDrawn(Renderer& on);
 	};
 }

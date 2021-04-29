@@ -3,8 +3,7 @@
 #include <cassert>
 #include <vector>
 #include <algorithm>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include "Renderer.h"
 
 namespace Sprite
 {
@@ -12,11 +11,11 @@ namespace Sprite
 	{
 		std::vector<sf::Sprite> sprites;
 	public:
-		Sheet(const sf::Texture& source, const sf::IntRect& firstSpriteLocation, size_t spriteCount);
+		Sheet(const sf::Texture& source, const sf::IntRect& firstSpriteLocation, size_t spriteCount, float spriteWorldSize);
 		[[nodiscard]] size_t Count() const noexcept;
 		void Move(float offsetX, float offsetY);
 		void Scale(float factor);
 		void Flip();
-		void GetDrawn(size_t spriteIndex, sf::RenderWindow& on) const;
+		void GetDrawn(size_t spriteIndex, Renderer& on) const;
 	};
 }
