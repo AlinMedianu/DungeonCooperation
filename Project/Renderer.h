@@ -12,7 +12,7 @@ class Renderer
 	sf::RenderWindow& window;
 	sf::RenderStates worldToScreen;
 public:
-	Renderer(sf::RenderWindow& window, float worldUnitsPerScreenWidth);
+	explicit Renderer(sf::RenderWindow& window, float worldUnitsPerScreenWidth);
 	void Draw(const Drawable auto& drawable);
 };
 

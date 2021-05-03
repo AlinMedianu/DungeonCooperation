@@ -18,13 +18,10 @@ namespace Sprite
 			Idle, Walk,
 			COUNT
 		};
-		Animation(Sheet& body, size_t firstFrame, size_t lastFrame, float timeBetweenFrames);
+		explicit Animation(Sheet& body, size_t firstFrame, size_t lastFrame, float timeBetweenFrames);
 		[[nodiscard]] constexpr bool IsPlaying() const noexcept;
 		void Play();
 		void Stop() noexcept;
-		void Move(float offsetX, float offsetY);
-		void Scale(float factor);
-		void Flip();
-		void GetDrawn(Renderer& on);
+		void GetDrawn(Renderer& by);
 	};
 }

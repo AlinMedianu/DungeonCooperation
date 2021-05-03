@@ -13,15 +13,12 @@ namespace Sprite
 		std::vector<Animation> animations;
 		AnimationType current;
 	public:
-		Animator(Sheet& body, const std::array<size_t,
+		explicit Animator(Sheet& body, const std::array<size_t,
 			static_cast<size_t>(AnimationType::COUNT)>& frameCountPerAnimation, float timeBetweenFrames);
 		[[nodiscard]] constexpr AnimationType CurrentAnimation() const noexcept;
 		void Play(AnimationType animation);
 		void Stop() noexcept;
-		void Move(float offsetX, float offsetY);
-		void Scale(float factor);
-		void Flip();
-		void GetDrawn(Renderer& on);
+		void GetDrawn(Renderer& by);
 	};
 
 	template<Enumeration AnimationType>
@@ -62,26 +59,8 @@ namespace Sprite
 	}
 
 	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::Move(float offsetX, float offsetY)
+	inline void Animator<AnimationType>::GetDrawn(Renderer& by)
 	{
-		animations[static_cast<size_t>(current)].Move(offsetX, offsetY);
-	}
-
-	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::Scale(float factor)
-	{
-		animations[static_cast<size_t>(current)].Scale(factor);
-	}
-
-	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::Flip()
-	{
-		animations[static_cast<size_t>(current)].Flip();
-	}
-
-	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::GetDrawn(Renderer& on)
-	{
-		animations[static_cast<size_t>(current)].GetDrawn(on);
+		animations[static_cast<size_t>(current)].GetDrawn(by);
 	}
 }

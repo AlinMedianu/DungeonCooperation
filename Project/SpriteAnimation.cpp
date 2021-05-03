@@ -24,25 +24,9 @@ namespace Sprite
 		frameTimer.reset();
 	}
 
-	void Animation::Move(float offsetX, float offsetY)
+	void Animation::GetDrawn(Renderer& by)
 	{
-		body.Move(offsetX, offsetY);
-	}
-
-	void Animation::Scale(float factor)
-	{
-		assert(factor > 0);
-		body.Scale(factor);
-	}
-
-	void Animation::Flip()
-	{
-		body.Flip();
-	}
-
-	void Animation::GetDrawn(Renderer& on)
-	{
-		body.GetDrawn(currentFrame, on);
+		body.GetDrawn(currentFrame, by);
 		if (IsPlaying() && frameTimer->getElapsedTime().asSeconds() >= timeBetweenFrames)
 		{
 			frameTimer->restart();
