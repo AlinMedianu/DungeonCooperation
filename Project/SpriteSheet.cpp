@@ -3,73 +3,83 @@
 namespace Sprite
 {
 	Sheet::Sheet(const sf::Texture& source, const sf::Rect<unsigned>& firstSpriteLocation, sf::Vector2u spriteCount)
-		: sprites{}
+		: body{ source }, spriteCoordinates{}
 	{
-		sprites.assign(spriteCount.x * spriteCount.y, sf::Sprite{ source });
+		spriteCoordinates.assign(spriteCount.x * spriteCount.y, {});
 		sf::IntRect nextSpriteLocation{ firstSpriteLocation };
 		for (unsigned coordinateY{}; coordinateY < spriteCount.y; ++coordinateY)
 		{
 			for (unsigned coordinateX{}; coordinateX < spriteCount.x; ++coordinateX)
 			{
-				sprites[coordinateY * spriteCount.x + coordinateX].setTextureRect(nextSpriteLocation);
+				spriteCoordinates[coordinateY * spriteCount.x + coordinateX] = nextSpriteLocation;
 				nextSpriteLocation.left += nextSpriteLocation.width;
 			}
 			nextSpriteLocation.left = firstSpriteLocation.left;
 			nextSpriteLocation.top += nextSpriteLocation.height;
 		}
+		body.setTextureRect(spriteCoordinates[0]);
 	}
 
 	size_t Sheet::Count() const noexcept
 	{
-		return sprites.size();
+		return spriteCoordinates.size();
 	}
 
-	void Sheet::SetPosition(size_t spriteIndex, sf::Vector2i position)
+	void Sheet::ChangeTo(size_t spriteIndex)
 	{
-		sprites[spriteIndex].setPosition(static_cast<float>(position.x), static_cast<float>(position.y));
+		body.setTextureRect(spriteCoordinates[spriteIndex]);
 	}
 
-	void Sheet::SetPosition(size_t spriteIndex, float x, float y)
+	sf::Vector2f Sheet::GetPosition() const
 	{
-		sprites[spriteIndex].setPosition(x, y);
+		return body.getPosition();
 	}
 
-	void Sheet::SetOriginAll(float localX, float localY)
+	void Sheet::SetPosition(sf::Vector2i position)
+	{
+		body.setPosition(static_cast<float>(position.x), static_cast<float>(position.y));
+	}
+
+	void Sheet::SetPosition(float x, float y)
+	{
+		body.setPosition(x, y);
+	}
+
+	void Sheet::SetOrigin(float localX, float localY)
 	{
 		assert(localX >= 0 && localX <= 1 && localY >= 0 && localY <= 1);
-		for (auto& sprite : sprites)
-			sprite.setOrigin(sprite.getLocalBounds().left + sprite.getLocalBounds().width * localX,
-				sprite.getLocalBounds().top + sprite.getLocalBounds().height * localY);
+		body.setOrigin(body.getLocalBounds().left + body.getLocalBounds().width * localX,
+			body.getLocalBounds().top + body.getLocalBounds().height * localY);
 	}
 
-	void Sheet::MoveAll(float offsetX, float offsetY)
+	void Sheet::Move(sf::Vector2f offset)
 	{
-		for (auto& sprite : sprites)
-			sprite.move(offsetX, offsetY);
+		body.move(offset);
 	}
 
-	void Sheet::SetScaleAll(float factor)
+	void Sheet::Move(float offsetX, float offsetY)
 	{
-		for (auto& sprite : sprites)
-			sprite.setScale(factor, -factor);
+		body.move(offsetX, offsetY);
 	}
 
-	void Sheet::ScaleAll(float factor)
+	void Sheet::SetScale(float factor)
+	{
+		body.setScale(factor, -factor);
+	}
+
+	void Sheet::Scale(float factor)
 	{
 		assert(factor > 0);
-		for (auto& sprite : sprites)
-			sprite.scale(factor, factor);
+		body.scale(factor, factor);
 	}
 
-	void Sheet::FlipAll()
+	void Sheet::Flip()
 	{
-		for (auto& sprite : sprites)
-			sprite.scale(-1, 1);
+		body.scale(-1, 1);
 	}
 
-	void Sheet::GetDrawn(size_t spriteIndex, Renderer& by) const
+	void Sheet::GetDrawn(Renderer& by) const
 	{
-		assert(spriteIndex < sprites.size());
-		by.Draw(sprites[spriteIndex]);
+		by.Draw(body);
 	}
 }

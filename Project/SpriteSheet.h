@@ -10,17 +10,21 @@ namespace Sprite
 {
 	class Sheet
 	{
-		std::vector<sf::Sprite> sprites;
+		sf::Sprite body;
+		std::vector<sf::IntRect> spriteCoordinates;
 	public:
 		explicit Sheet(const sf::Texture& source, const sf::Rect<unsigned>& firstSpriteLocation, sf::Vector2u spriteCount);
 		[[nodiscard]] size_t Count() const noexcept;
-		void SetPosition(size_t spriteIndex, sf::Vector2i position);
-		void SetPosition(size_t spriteIndex, float x, float y);
-		void SetOriginAll(float localX, float localY);
-		void MoveAll(float offsetX, float offsetY);
-		void SetScaleAll(float factor);
-		void ScaleAll(float factor);
-		void FlipAll();
-		void GetDrawn(size_t spriteIndex, Renderer& by) const;
+		void ChangeTo(size_t spriteIndex);
+		sf::Vector2f GetPosition() const;
+		void SetPosition(sf::Vector2i position);
+		void SetPosition(float x, float y);
+		void SetOrigin(float localX, float localY);
+		void Move(sf::Vector2f offset);
+		void Move(float offsetX, float offsetY);
+		void SetScale(float factor);
+		void Scale(float factor);
+		void Flip();
+		void GetDrawn(Renderer& by) const;
 	};
 }

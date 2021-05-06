@@ -77,23 +77,27 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>..\Dependencies\SFML-2.5.1\lib;&lt;different options&gt;</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>..\Dependencies\SFML-2.5.1\lib;&lt;different options&gt;</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>FontDirectory=R"($(ProjectDir)..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\Resources\Sprites\)";SFML_STATIC;InputDirectory=R"($(ProjectDir)..\Input\)";FontDirectory=R"($(ProjectDir)..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\Resources\Sprites\)";SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FontDirectory=R"($(ProjectDir)..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\Resources\Sprites\)";SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>..\Dependencies\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\Dependencies\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -125,6 +129,7 @@
       <PreprocessorDefinitions>FontDirectory=R"($(ProjectDir)..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\Resources\Sprites\)";SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Dependencies\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +147,7 @@
       <PreprocessorDefinitions>FontDirectory=R"(Resources\Fonts\)";SpriteDirectory=R"(Resources\Sprites\)";SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\Dependencies\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InputMover.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -163,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enumeration.h" />
+    <ClInclude Include="InputMover.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SpriteAnimation.h" />

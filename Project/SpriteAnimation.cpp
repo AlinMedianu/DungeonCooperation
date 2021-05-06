@@ -7,6 +7,7 @@ namespace Sprite
 		currentFrame{ firstFrame }, lastFrame{ lastFrame }, timeBetweenFrames{ timeBetweenFrames }
 	{
 		assert(firstFrame >= 0 && firstFrame <= lastFrame && lastFrame < body.Count());
+		body.ChangeTo(firstFrame);
 	}
 
 	constexpr bool Animation::IsPlaying() const noexcept
@@ -26,12 +27,13 @@ namespace Sprite
 
 	void Animation::GetDrawn(Renderer& by)
 	{
-		body.GetDrawn(currentFrame, by);
+		body.GetDrawn(by);
 		if (IsPlaying() && frameTimer->getElapsedTime().asSeconds() >= timeBetweenFrames)
 		{
 			frameTimer->restart();
 			if (++currentFrame > lastFrame)
 				currentFrame = firstFrame;
+			body.ChangeTo(currentFrame);
 		}
 	}
 }

@@ -7,6 +7,11 @@
 
 namespace Sprite
 {
+	enum class FacingDirection
+	{
+		Left, Right
+	};
+
 	template<Enumeration AnimationType>
 	class Animator
 	{
@@ -46,9 +51,12 @@ namespace Sprite
 	template<Enumeration AnimationType>
 	void Animator<AnimationType>::Play(AnimationType animation)
 	{
-		current = animation;
-		Stop();
-		animations[static_cast<size_t>(current)].Play();
+		if (!animations[static_cast<size_t>(animation)].IsPlaying())
+		{
+			current = animation;
+			Stop();
+			animations[static_cast<size_t>(current)].Play();
+		}
 	}
 
 	template<Enumeration AnimationType>
