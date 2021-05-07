@@ -4,6 +4,7 @@
 
 struct Tile
 {
-	sf::Vector2i position;
+	size_t tileSet;
 	size_t variation;
+	bool blocked;
 };

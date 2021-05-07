@@ -9,9 +9,19 @@ namespace Input
 		animator.Play(Sprite::Animation::Player::Idle);
 	}
 
+	sf::Vector2f Mover::GetPosition() const
+	{
+		return body.GetPosition();
+	}
+
 	sf::Vector2f Mover::GetVelocity() const
 	{
 		return velocity;
+	}
+
+	void Mover::Move(sf::Vector2f amount)
+	{
+		body.Move(amount);
 	}
 
 	void Mover::Look(Sprite::FacingDirection direction)
@@ -37,7 +47,8 @@ namespace Input
 		Math::Normalize(velocity);
 		if (velocity != sf::Vector2f{})
 		{
-			body.Move(velocity * speed * timeStep);
+			velocity *= speed * timeStep;
+			body.Move(velocity);
 			animator.Play(Sprite::Animation::Player::Walk);
 			if (velocity.x > 0)
 				Look(Sprite::FacingDirection::Right);

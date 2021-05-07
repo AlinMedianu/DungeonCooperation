@@ -166,7 +166,6 @@
     <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="TileGeneration.cpp" />
-    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enumeration.h" />

@@ -33,9 +33,6 @@
     <ClCompile Include="RandomNumberGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InputMover.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

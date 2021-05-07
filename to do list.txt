@@ -2,7 +2,7 @@ player animator - done
 world coordinates - done
 tile map - done
 player mover - done
-tile collision
+tile collision - done
 UI
 online session
 character selection

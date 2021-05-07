@@ -1,7 +1,6 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Texture.hpp>
 //#include <SFML/Graphics/View.hpp>
-#include "InputMover.h"
 #include "TileMap.h"
 
 int main()
@@ -23,17 +22,79 @@ int main()
     Sprite::Sheet floor(yellowBrickFloor, { 0, 0, 32, 32 }, { 4, 6 });
     floor.SetScale(1.f / 32);
     floor.SetOrigin(0.5f, 0.5f);
+    sf::Texture yellowDungeonTileset{};
+    yellowDungeonTileset.loadFromFile(SpriteDirectory"Yellow Dungeon Tileset.png");
+    Sprite::Sheet walls(yellowDungeonTileset, { 0, 0, 32, 32 }, { 3, 3 });
+    walls.SetScale(1.f / 32);
+    walls.SetOrigin(0.5f, 0.5f);
     TileGeneration::Pipeline pipeline
     (
-        TileGeneration::Stages::Rectangle({ -5, 5, 10, 10 }),
-        TileGeneration::Stages::RandomVariants(0, 23)
+        TileGeneration::Stages::Rectangle({ -5, 5, 10, 10 }, Tile{}),
+        TileGeneration::Stages::RandomVariants(0, 23),
+        TileGeneration::Stages::Rectangle({ -6, 6, 0, 0 }, 
+            Tile
+            { 
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::NorthWest),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ -5, 6, 10, 0 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::North),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ 6, 6, 0, 0 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::NorthEast),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ -6, 5, 0, 10 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::West),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ 6, 5, 0, 10 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::East),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ -6, -6, 0, 0 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::SouthWest),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ -5, -6, 10, 0 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::South),
+                .blocked = true
+            }),
+        TileGeneration::Stages::Rectangle({ 6, -6, 0, 0 },
+            Tile
+            {
+                .tileSet = 1,
+                .variation = static_cast<size_t>(YellowDungeonTIleset::SouthEast),
+                .blocked = true
+            })
     );
-    TileMap tiles(floor, pipeline);
+    TileMap room(std::array<Sprite::Sheet*, 2>{ &floor, &walls }, std::move(pipeline));
     sf::Clock frame;
     while (window.isOpen())
     {
         float timeStep = frame.restart().asSeconds();
         playerMover.Update(timeStep);
+        room.Adjust(playerMover);
         sf::Event gameEvent;
         while (window.pollEvent(gameEvent))
         { 
@@ -52,7 +113,7 @@ int main()
             }
         }
         window.clear();
-        tiles.GetDrawn(renderer);
+        room.GetDrawn(renderer);
         playerAnimator.GetDrawn(renderer);
         window.display();
     }

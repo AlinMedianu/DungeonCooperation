@@ -2,16 +2,17 @@
 
 #include <cassert>
 #include <array>
-#include <vector>
+#include <unordered_map>
 #include <tuple>
 #include <SFML/Graphics/Rect.hpp>
 #include "Tile.h"
+#include "Math.h"
 #include "RandomNumberGenerator.h"
 
 namespace TileGeneration
 {
     template<typename T>
-    concept Stage = requires(T && rule, std::vector<Tile>& tiles)
+    concept Stage = requires(T&& rule, std::unordered_map<sf::Vector2i, Tile>& tiles)
     {
         { rule(tiles) } -> std::same_as<void>;
     };
@@ -22,7 +23,7 @@ namespace TileGeneration
         std::tuple<Stages...> stages;
     public:
         Pipeline(Stages... stages) noexcept;
-        void operator()(std::vector<Tile>& tiles);
+        void operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const;
     };
 
     template<Stage... Stages>
@@ -33,7 +34,7 @@ namespace TileGeneration
     }
 
     template<Stage... Stages>
-    void Pipeline<Stages...>::operator()(std::vector<Tile>& tiles)
+    void Pipeline<Stages...>::operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const
     {
         std::apply([&](Stages... stages){ (stages(tiles), ...); }, stages);
     }
@@ -43,9 +44,10 @@ namespace TileGeneration
         class Rectangle
         {
             sf::IntRect bounds;
+            Tile tile;
         public:
-            explicit Rectangle(sf::IntRect&& bounds) noexcept;
-            void operator()(std::vector<Tile>& tiles);
+            explicit Rectangle(sf::IntRect&& bounds, Tile&& tile) noexcept;
+            void operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const;
         };
 
         template<size_t count>
@@ -54,7 +56,7 @@ namespace TileGeneration
             std::array<sf::Vector2i, count> excluded;
         public:
             explicit Except(std::array<sf::Vector2i, count>&& excluded) noexcept;
-            void operator()(std::vector<Tile>& tiles);
+            void operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const;
         };
 
         template<size_t count>
@@ -65,12 +67,10 @@ namespace TileGeneration
         }
 
         template<size_t count>
-        void Except<count>::operator()(std::vector<Tile>& tiles)
+        void Except<count>::operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const
         {
-            std::erase_if(tiles, [&](Tile& tile)
-                {
-                    return std::find(excluded.begin(), excluded.end(), tile.position) != excluded.end();
-                });
+            for (sf::Vector2i excludedTIle : excluded)
+                tiles.erase(excludedTIle);
         }
 
         class RandomVariants
@@ -79,7 +79,7 @@ namespace TileGeneration
             size_t min, max;
         public:
             RandomVariants(size_t min, size_t max) noexcept;
-            void operator()(std::vector<Tile>& tiles);
+            void operator()(std::unordered_map<sf::Vector2i, Tile>& tiles);
         };
     }
 

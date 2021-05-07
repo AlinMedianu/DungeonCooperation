@@ -17,4 +17,22 @@ namespace Math
             return;
         vector /= magnitude;
     }
+
+    [[nodiscard]] inline size_t HashCombine(size_t first, size_t second) noexcept
+    {
+        return first ^ (second << 1);
+    }
+}
+
+namespace std
+{
+    template<> struct hash<sf::Vector2i>
+    {
+        [[nodiscard]] size_t operator()(sf::Vector2i value) const noexcept
+        {
+            size_t first = std::hash<int>{}(value.x);
+            size_t second = std::hash<int>{}(value.y);
+            return Math::HashCombine(first, second);
+        }
+    };
 }
