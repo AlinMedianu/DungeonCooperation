@@ -16,7 +16,7 @@ namespace Scenes
 		bool wantsToQuit;
 	public:
 		explicit Manager(std::array<Scene*, static_cast<size_t>(SceneType::COUNT)>&& scenes) noexcept;
-		[[nodiscard]] bool WantsToQuit() const;
+		[[nodiscard]] bool WantsToQuit() const noexcept;
 		void UpdateCurrent();
 		void DrawCurrent(Renderer& with) const;
 	};
@@ -28,7 +28,7 @@ namespace Scenes
 	}
 
 	template<Enumeration SceneType>
-	inline bool Manager<SceneType>::WantsToQuit() const
+	inline bool Manager<SceneType>::WantsToQuit() const noexcept
 	{
 		return wantsToQuit;
 	}

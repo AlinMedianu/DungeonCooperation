@@ -1,4 +1,5 @@
 #include "UIButton.h"
+
 namespace UI
 {
 	Button::Button(Sprite::Sheet& body, sf::Text& message)
