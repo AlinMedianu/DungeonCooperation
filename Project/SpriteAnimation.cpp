@@ -25,9 +25,8 @@ namespace Sprite
 		frameTimer.reset();
 	}
 
-	void Animation::GetDrawn(Renderer& by)
+	void Animation::Update()
 	{
-		body.GetDrawn(by);
 		if (IsPlaying() && frameTimer->getElapsedTime().asSeconds() >= timeBetweenFrames)
 		{
 			frameTimer->restart();
@@ -35,5 +34,10 @@ namespace Sprite
 				currentFrame = firstFrame;
 			body.ChangeTo(currentFrame);
 		}
+	}
+
+	void Animation::GetDrawn(Renderer& by) const
+	{
+		body.GetDrawn(by);
 	}
 }

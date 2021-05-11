@@ -5,6 +5,9 @@
 
 namespace Math
 {
+    template<typename T>
+    concept Number = std::integral<T> || std::floating_point<T>;
+
     [[nodiscard]] inline float Length(sf::Vector2f vector)
     {
         return sqrtf(powf(vector.x, 2) + powf(vector.y, 2));

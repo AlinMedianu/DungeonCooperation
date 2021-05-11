@@ -7,3 +7,13 @@ Renderer::Renderer(sf::RenderWindow& window, float worldUnitsPerScreenWidth)
 	worldToScreen.transform.scale(scaleFactor, -scaleFactor).
 		translate(window.getSize().x / (2.f * scaleFactor), window.getSize().y / -(2.f * scaleFactor));
 }
+
+sf::FloatRect Renderer::WorldCoordinateToScreenPosition(sf::FloatRect worldCoordinates) const
+{
+	return worldToScreen.transform.transformRect(worldCoordinates);
+}
+
+sf::Vector2f Renderer::ScreenPositionToWorldCoordinate(sf::Vector2f screenPosition) const
+{
+	return worldToScreen.transform.getInverse().transformPoint(screenPosition);
+}

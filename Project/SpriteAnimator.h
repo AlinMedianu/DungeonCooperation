@@ -23,7 +23,8 @@ namespace Sprite
 		[[nodiscard]] constexpr AnimationType CurrentAnimation() const noexcept;
 		void Play(AnimationType animation);
 		void Stop() noexcept;
-		void GetDrawn(Renderer& by);
+		void Update();
+		void GetDrawn(Renderer& by) const;
 	};
 
 	template<Enumeration AnimationType>
@@ -67,7 +68,13 @@ namespace Sprite
 	}
 
 	template<Enumeration AnimationType>
-	inline void Animator<AnimationType>::GetDrawn(Renderer& by)
+	inline void Animator<AnimationType>::Update()
+	{
+		animations[static_cast<size_t>(current)].Update();
+	}
+
+	template<Enumeration AnimationType>
+	inline void Animator<AnimationType>::GetDrawn(Renderer& by) const
 	{
 		animations[static_cast<size_t>(current)].GetDrawn(by);
 	}

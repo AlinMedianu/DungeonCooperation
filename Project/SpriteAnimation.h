@@ -22,6 +22,7 @@ namespace Sprite
 		[[nodiscard]] constexpr bool IsPlaying() const noexcept;
 		void Play();
 		void Stop() noexcept;
-		void GetDrawn(Renderer& by);
+		void Update();
+		void GetDrawn(Renderer& by) const;
 	};
 }

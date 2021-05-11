@@ -19,7 +19,7 @@ class TileMap
 	std::unordered_map<sf::Vector2i, Tile> tiles;
 public:
 	template<TileGeneration::Stage... Stages>
-	TileMap(std::array<Sprite::Sheet*, tilesetsCount>&& tilesets, TileGeneration::Pipeline<Stages...>&& pipeline);
+	explicit TileMap(std::array<Sprite::Sheet*, tilesetsCount>&& tilesets, TileGeneration::Pipeline<Stages...>&& pipeline);
 	void Adjust(Input::Mover& mover) const;
 	void GetDrawn(Renderer& by) const;
 };

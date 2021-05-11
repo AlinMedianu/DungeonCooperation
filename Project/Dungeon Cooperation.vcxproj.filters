@@ -36,6 +36,15 @@
     <ClCompile Include="InputMover.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpriteSheet.h">
@@ -69,6 +78,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

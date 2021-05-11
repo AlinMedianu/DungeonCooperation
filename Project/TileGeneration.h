@@ -22,12 +22,12 @@ namespace TileGeneration
     {
         std::tuple<Stages...> stages;
     public:
-        Pipeline(Stages... stages) noexcept;
+        explicit Pipeline(Stages&&... stages) noexcept;
         void operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const;
     };
 
     template<Stage... Stages>
-    Pipeline<Stages...>::Pipeline(Stages... stages) noexcept
+    Pipeline<Stages...>::Pipeline(Stages&&... stages) noexcept
         :stages(std::make_tuple(stages...))
     {
         
@@ -36,7 +36,10 @@ namespace TileGeneration
     template<Stage... Stages>
     void Pipeline<Stages...>::operator()(std::unordered_map<sf::Vector2i, Tile>& tiles) const
     {
-        std::apply([&](Stages... stages){ (stages(tiles), ...); }, stages);
+        std::apply([&tiles](Stages... stages)
+            { 
+                (stages(tiles), ...); 
+            }, stages);
     }
 
     namespace Stages
