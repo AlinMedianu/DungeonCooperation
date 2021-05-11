@@ -18,6 +18,37 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\InputMover.cpp" />
+    <ClCompile Include="..\Main.cpp" />
+    <ClCompile Include="..\MainMenuScene.cpp" />
+    <ClCompile Include="..\RandomNumberGenerator.cpp" />
+    <ClCompile Include="..\Renderer.cpp" />
+    <ClCompile Include="..\Server.cpp" />
+    <ClCompile Include="..\SpriteAnimation.cpp" />
+    <ClCompile Include="..\SpriteSheet.cpp" />
+    <ClCompile Include="..\TileGeneration.cpp" />
+    <ClCompile Include="..\TutorialScene.cpp" />
+    <ClCompile Include="..\UIButton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Enumeration.h" />
+    <ClInclude Include="..\InputMover.h" />
+    <ClInclude Include="..\MainMenuScene.h" />
+    <ClInclude Include="..\Math.h" />
+    <ClInclude Include="..\RandomNumberGenerator.h" />
+    <ClInclude Include="..\Renderer.h" />
+    <ClInclude Include="..\Scene.h" />
+    <ClInclude Include="..\SceneManager.h" />
+    <ClInclude Include="..\SpriteAnimation.h" />
+    <ClInclude Include="..\SpriteAnimator.h" />
+    <ClInclude Include="..\SpriteSheet.h" />
+    <ClInclude Include="..\Tile.h" />
+    <ClInclude Include="..\TileGeneration.h" />
+    <ClInclude Include="..\TileMap.h" />
+    <ClInclude Include="..\TutorialScene.h" />
+    <ClInclude Include="..\UIButton.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -102,7 +133,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\Dependencies\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,7 +153,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\Dependencies\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,36 +192,6 @@
       <AdditionalDependencies>opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-audio-s.lib;sfml-network-s.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="InputMover.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenuScene.cpp" />
-    <ClCompile Include="RandomNumberGenerator.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="SpriteAnimation.cpp" />
-    <ClCompile Include="SpriteSheet.cpp" />
-    <ClCompile Include="TileGeneration.cpp" />
-    <ClCompile Include="TutorialScene.cpp" />
-    <ClCompile Include="UIButton.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Enumeration.h" />
-    <ClInclude Include="InputMover.h" />
-    <ClInclude Include="MainMenuScene.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="RandomNumberGenerator.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SpriteAnimation.h" />
-    <ClInclude Include="SpriteAnimator.h" />
-    <ClInclude Include="SpriteSheet.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="TileGeneration.h" />
-    <ClInclude Include="TileMap.h" />
-    <ClInclude Include="TutorialScene.h" />
-    <ClInclude Include="UIButton.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

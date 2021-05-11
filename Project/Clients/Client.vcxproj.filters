@@ -15,84 +15,87 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="..\InputMover.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
+    <ClCompile Include="..\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteAnimation.cpp">
+    <ClCompile Include="..\MainMenuScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="..\RandomNumberGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileGeneration.cpp">
+    <ClCompile Include="..\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RandomNumberGenerator.cpp">
+    <ClCompile Include="..\SpriteAnimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputMover.cpp">
+    <ClCompile Include="..\SpriteSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UIButton.cpp">
+    <ClCompile Include="..\TileGeneration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TutorialScene.cpp">
+    <ClCompile Include="..\TutorialScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenuScene.cpp">
+    <ClCompile Include="..\UIButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpriteSheet.h">
+    <ClInclude Include="..\UIButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteAnimation.h">
+    <ClInclude Include="..\Enumeration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteAnimator.h">
+    <ClInclude Include="..\InputMover.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enumeration.h">
+    <ClInclude Include="..\MainMenuScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="..\Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileGeneration.h">
+    <ClInclude Include="..\RandomNumberGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RandomNumberGenerator.h">
+    <ClInclude Include="..\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="..\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
+    <ClInclude Include="..\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputMover.h">
+    <ClInclude Include="..\SpriteAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
+    <ClInclude Include="..\SpriteAnimator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIButton.h">
+    <ClInclude Include="..\SpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialScene.h">
+    <ClInclude Include="..\Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenuScene.h">
+    <ClInclude Include="..\TileGeneration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="..\TileMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="..\TutorialScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

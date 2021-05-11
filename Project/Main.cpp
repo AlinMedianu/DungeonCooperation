@@ -15,11 +15,14 @@ int main()
     Scenes::Manager<Scenes::Type> sceneManager({ &mainMenu, &tutorial });
     while (window.isOpen())
     {          
-        sceneManager.UpdateCurrent();
-        if (sceneManager.WantsToQuit())
+        if (window.hasFocus())
         {
-            window.close();
-            break;
+            sceneManager.UpdateCurrent();
+            if (sceneManager.WantsToQuit())
+            {
+                window.close();
+                break;
+            }
         }
         sf::Event gameEvent;
         while (window.pollEvent(gameEvent))
