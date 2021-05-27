@@ -5,9 +5,12 @@
 
 class RandomNumberGenerator
 {
+	int seed;
 	std::mt19937 engine;
 public:
 	RandomNumberGenerator() noexcept;
-	int operator()(int min, int max);
+	explicit RandomNumberGenerator(int seed) noexcept;
+	[[nodiscard]] int GetSeed() const noexcept;
+	[[nodiscard]] int operator()(int min, int max);
 };
 

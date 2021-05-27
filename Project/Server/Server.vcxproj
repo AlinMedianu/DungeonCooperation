@@ -20,11 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\InputMover.cpp" />
-    <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\MainMenuScene.cpp" />
+    <ClCompile Include="..\NetworkPacket.cpp" />
+    <ClCompile Include="..\NetworkPool.cpp" />
+    <ClCompile Include="..\NetworkReceiver.cpp" />
+    <ClCompile Include="..\NetworkRetransmissionTimeoutCalculator.cpp" />
+    <ClCompile Include="..\NetworkRetransmitter.cpp" />
+    <ClCompile Include="..\NetworkServer.cpp" />
+    <ClCompile Include="..\NetworkSocket.cpp" />
+    <ClCompile Include="..\NetworkTransmitter.cpp" />
     <ClCompile Include="..\RandomNumberGenerator.cpp" />
     <ClCompile Include="..\Renderer.cpp" />
-    <ClCompile Include="..\Server.cpp" />
+    <ClCompile Include="..\ServerApplication.cpp" />
     <ClCompile Include="..\SpriteAnimation.cpp" />
     <ClCompile Include="..\SpriteSheet.cpp" />
     <ClCompile Include="..\TileGeneration.cpp" />
@@ -36,6 +43,17 @@
     <ClInclude Include="..\InputMover.h" />
     <ClInclude Include="..\MainMenuScene.h" />
     <ClInclude Include="..\Math.h" />
+    <ClInclude Include="..\NetworkMaxConnections.h" />
+    <ClInclude Include="..\NetworkMessages.h" />
+    <ClInclude Include="..\NetworkPacket.h" />
+    <ClInclude Include="..\NetworkPool.h" />
+    <ClInclude Include="..\NetworkReceiver.h" />
+    <ClInclude Include="..\NetworkRetransmissionTimeoutCalculator.h" />
+    <ClInclude Include="..\NetworkRetransmitter.h" />
+    <ClInclude Include="..\NetworkServer.h" />
+    <ClInclude Include="..\NetworkSocket.h" />
+    <ClInclude Include="..\NetworkTransmitter.h" />
+    <ClInclude Include="..\NetworkTrap.h" />
     <ClInclude Include="..\RandomNumberGenerator.h" />
     <ClInclude Include="..\Renderer.h" />
     <ClInclude Include="..\Scene.h" />
@@ -124,13 +142,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>FontDirectory=R"($(ProjectDir)..\..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\..\Resources\Sprites\)";SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;FontDirectory=R"($(ProjectDir)..\..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\..\Resources\Sprites\)";AddressAndPortLocation=R"($(ProjectDir)..\..\)";SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\Dependencies\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\Dependencies\SFML-2.5.1\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>ws2_32.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -142,13 +160,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>FontDirectory=R"($(ProjectDir)..\..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\..\Resources\Sprites\)";SFML_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;FontDirectory=R"($(ProjectDir)..\..\Resources\Fonts\)";SpriteDirectory=R"($(ProjectDir)..\..\Resources\Sprites\)";AddressAndPortLocation=R"($(ProjectDir)..\..\)";SFML_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\Dependencies\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Dependencies\SFML-2.5.1\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>

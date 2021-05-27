@@ -1,9 +1,0 @@
-player animator - done
-world coordinates - done
-tile map - done
-player mover - done
-tile collision - done
-UI - done
-online session
-character selection
-message passing

@@ -7,9 +7,8 @@
 
 namespace UI
 {
-	class Button
+	struct Button
 	{		
-	public:
 		enum class State : size_t { Default, Hover, Down, Inactive, COUNT };
 		explicit Button(Sprite::Sheet& body, sf::Text& message);
 		void Update(const sf::Window& on);

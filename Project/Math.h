@@ -6,7 +6,7 @@
 namespace Math
 {
     template<typename T>
-    concept Number = std::integral<T> || std::floating_point<T>;
+    concept Number = std::is_arithmetic_v<T>;
 
     [[nodiscard]] inline float Length(sf::Vector2f vector)
     {
